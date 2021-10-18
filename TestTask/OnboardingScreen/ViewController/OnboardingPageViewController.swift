@@ -70,6 +70,7 @@ extension OnboardingPageViewController {
 
         self.dataSource = self
         self.delegate = self
+        
         if let startingViewController = contentViewController(at: 0) {
             currentPageIndex = (startingViewController as? OnboardingContentViewController)!.index
             setViewControllers([startingViewController], direction: .forward, animated: true, completion: nil)
@@ -113,7 +114,9 @@ extension OnboardingPageViewController:  UIPageViewControllerDelegate {
 // MARK: - UIScrollViewDelegate
 
 extension OnboardingPageViewController: UIScrollViewDelegate {
-    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
+    }
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         let currentVelocityY = scrollView.panGestureRecognizer.velocity(in: scrollView.superview).x
         let currentVelocityYSign = Int(currentVelocityY).signum()
@@ -134,3 +137,4 @@ extension OnboardingPageViewController: UIScrollViewDelegate {
         }
     }
 }
+  

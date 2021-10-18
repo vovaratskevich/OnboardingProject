@@ -17,16 +17,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splashscreen" translatesAutoresizingMaskIntoConstraints="NO" id="58n-47-kTs">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="901"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="58n-47-kTs" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="9ls-hc-zET"/>
-                            <constraint firstItem="58n-47-kTs" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="N5y-bN-fRp"/>
-                            <constraint firstItem="58n-47-kTs" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-2.5" id="cMd-aV-2Cc"/>
-                            <constraint firstItem="58n-47-kTs" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" constant="5" id="vgb-p2-67T"/>
+                            <constraint firstItem="58n-47-kTs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HsS-LM-0Se"/>
+                            <constraint firstItem="58n-47-kTs" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="NjO-OF-Ntg"/>
+                            <constraint firstItem="58n-47-kTs" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fgw-nF-XK8"/>
+                            <constraint firstAttribute="bottom" secondItem="58n-47-kTs" secondAttribute="bottom" id="o6Q-cR-Ixq"/>
                         </constraints>
                     </view>
                 </viewController>

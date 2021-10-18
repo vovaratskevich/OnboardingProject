@@ -15,13 +15,13 @@ class OnboardingViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var getStartButton: UIButton!
+    @IBOutlet weak var hiddenMaskButton: UIButton!
     
     var onboardingPageViewController: OnboardingPageViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureView()
         delegateCallback()
     }
     
@@ -29,6 +29,10 @@ class OnboardingViewController: UIViewController {
         super.viewWillAppear(true)
         
         navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewDidLayoutSubviews() {
+        configureView()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -69,17 +73,40 @@ extension OnboardingViewController {
 extension OnboardingViewController {
     
     private func configureView() {
-        //navigationController?.navigationBar.isHidden = true
-        //onboardingPageViewController?.onboardingDelegate = self
+        let maskButton = UIButton()
+        skipButton.updateFocusIfNeeded()
+        maskButton.frame = skipButton.bounds
+        maskButton.setTitle(skipButton.titleLabel?.text, for: .normal)
+        maskButton.titleLabel?.font = UIFont(name: "TTNorms-Medium", size: 17)
+        maskButton.layer.cornerRadius = 10
+        maskButton.layer.borderWidth = 1
+        skipButton.mask = maskButton
         
-        nextButton.layer.cornerRadius = 10
-        skipButton.layer.cornerRadius = 10
-        getStartButton.layer.cornerRadius = 10
-        skipButton.layer.borderWidth = 1
-        skipButton.layer.borderColor = UIColor.red.cgColor
+        configureGradientButton(with: skipButton)
+        configureGradientButton(with: nextButton)
+        configureGradientButton(with: getStartButton)
     }
     
-    func updateUI() {
+    func configureGradientButton(with button: UIButton) {
+        button.layer.cornerRadius = 10
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = button.bounds
+        gradientLayer.colors = [UIColor(red: 1, green: 0.408, blue: 0, alpha: 1).cgColor,
+                                UIColor(red: 1, green: 0.278, blue: 0.094, alpha: 1).cgColor,
+                                UIColor(red: 1, green: 0.161, blue: 0.18, alpha: 1).cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0.25, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 0.75, y: 0.5)
+        if button == nextButton || button == getStartButton {
+            button.layer.insertSublayer(gradientLayer, at: 0)
+        } else {
+            button.layer.addSublayer(gradientLayer)
+        }
+        button.layer.masksToBounds = true
+        button.titleLabel?.tintColor = .white
+        button.titleLabel?.font = UIFont(name: "TTNorms-Medium", size: 17)
+    }
+    
+    private func updateUI() {
         if let index = onboardingPageViewController?.currentPageIndex {
             switch index {
             case 0...1:
@@ -113,15 +140,5 @@ extension OnboardingViewController {
     }
 }
 
-
-
-// MARK: - OnboardingPageViewControllerDelegate
-
-//extension OnboardingViewController: OnboardingPageViewControllerDelegate {
-//
-//    func didUpdatePageIndex(currentPageIndex: Int) {
-//        updateUI()
-//    }
-//}
 
 
