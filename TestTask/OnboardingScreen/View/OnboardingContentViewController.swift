@@ -16,10 +16,21 @@ class OnboardingContentViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var childView: UIView!
     
-    var index = 0
-    private var headerText = "nil"
-    private var descriptionText = "nil"
-    private var imageName = "nil"
+//    init?(coder: NSCoder, index: Int, item: Onboarding) {
+//        self.index = index
+//        self.headerText = item.headerText
+//        self.descriptionText = item.descriptionText
+//        self.imageName = item.imageName
+//        super.init(coder: coder)
+//    }
+//
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+
+    private var headerText: String = "nil"
+    private var descriptionText: String = "nil"
+    private var imageName: String = "nil"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,31 +56,9 @@ extension OnboardingContentViewController {
         descriptionLabel.textColor = UIColor(red: 0.094, green: 0.136, blue: 0.179, alpha: 1)
     }
     
-//    private func layout() {
-//
-//        imageView.translatesAutoresizingMaskIntoConstraints = false
-//        headerLabel.translatesAutoresizingMaskIntoConstraints = false
-//        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-//        childView.translatesAutoresizingMaskIntoConstraints = false
-//        //lableStackView.translatesAutoresizingMaskIntoConstraints = false
-//
-//
-//        NSLayoutConstraint.activate([
-//            imageView.topAnchor.constraint(equalTo: view.topAnchor),
-//            imageView.leftAnchor.constraint(equalTo: view.leftAnchor),
-//            imageView.rightAnchor.constraint(equalTo: view.rightAnchor),
-//            imageView.heightAnchor.constraint(equalToConstant: view.bounds.height / 1.89),
-//
-//            childView.leftAnchor.constraint(equalTo: view.leftAnchor),
-//            childView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-//            childView.rightAnchor.constraint(equalTo: view.rightAnchor),
-//            childView.heightAnchor.constraint(equalToConstant: view.bounds.height / 1.99),
-//        ])
-//    }
-    
-    func updateData(item: Onboarding) {
-        headerText = item.headerText 
-        descriptionText = item.descriptionText 
-        imageName = item.imageName 
+    func setViewData(_ item: Onboarding) {
+        self.headerText = item.headerText
+        self.descriptionText = item.descriptionText
+        self.imageName = item.imageName
     }
 }

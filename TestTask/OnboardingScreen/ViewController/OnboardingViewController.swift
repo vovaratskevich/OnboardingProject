@@ -15,7 +15,6 @@ class OnboardingViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var getStartButton: UIButton!
-    @IBOutlet weak var hiddenMaskButton: UIButton!
     
     var onboardingPageViewController: OnboardingPageViewController?
 
@@ -32,6 +31,8 @@ class OnboardingViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
         configureView()
     }
     
@@ -45,7 +46,7 @@ class OnboardingViewController: UIViewController {
 
 // MARK: - Actions
 
-extension OnboardingViewController {
+private extension OnboardingViewController {
     
     @IBAction func skipButtonTapped(_ sender: UIButton) {
         if let homeViewController = storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController {
@@ -58,12 +59,15 @@ extension OnboardingViewController {
             switch index {
             case 0...1:
                 onboardingPageViewController?.forwardPage()
-            case 2:
-                dismiss(animated: true, completion: nil)
             default:
                 break
             }
         }
+        updateUI()
+    }
+    
+    @IBAction func pageControlTapped(_ sender: UIPageControl) {
+        onboardingPageViewController?.setPage(index: sender.currentPage)
         updateUI()
     }
 }
@@ -74,12 +78,11 @@ extension OnboardingViewController {
     
     private func configureView() {
         let maskButton = UIButton()
-        skipButton.updateFocusIfNeeded()
         maskButton.frame = skipButton.bounds
+        maskButton.layer.borderWidth = 1
+        maskButton.layer.cornerRadius = 10
         maskButton.setTitle(skipButton.titleLabel?.text, for: .normal)
         maskButton.titleLabel?.font = UIFont(name: "TTNorms-Medium", size: 17)
-        maskButton.layer.cornerRadius = 10
-        maskButton.layer.borderWidth = 1
         skipButton.mask = maskButton
         
         configureGradientButton(with: skipButton)
@@ -87,8 +90,7 @@ extension OnboardingViewController {
         configureGradientButton(with: getStartButton)
     }
     
-    func configureGradientButton(with button: UIButton) {
-        button.layer.cornerRadius = 10
+    private func configureGradientButton(with button: UIButton) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = button.bounds
         gradientLayer.colors = [UIColor(red: 1, green: 0.408, blue: 0, alpha: 1).cgColor,
@@ -101,6 +103,7 @@ extension OnboardingViewController {
         } else {
             button.layer.addSublayer(gradientLayer)
         }
+        button.layer.cornerRadius = 10
         button.layer.masksToBounds = true
         button.titleLabel?.tintColor = .white
         button.titleLabel?.font = UIFont(name: "TTNorms-Medium", size: 17)
