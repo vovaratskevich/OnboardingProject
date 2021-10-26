@@ -8,14 +8,14 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "HomeVC"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .organize)
-//        navigationItem.setHidesBackButton(true, animated: true)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: nil)
+        //navigationItem.setHidesBackButton(true, animated: true)
     }
 }

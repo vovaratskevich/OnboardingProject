@@ -9,15 +9,15 @@ import UIKit
 
 class OnboardingViewController: UIViewController {
     
-// MARK: - Outlets
+    // MARK: - Outlets
     
-    @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var skipButton: UIButton!
-    @IBOutlet weak var getStartButton: UIButton!
+    @IBOutlet weak private var pageControl: UIPageControl!
+    @IBOutlet weak private var nextButton: UIButton!
+    @IBOutlet weak private var skipButton: UIButton!
+    @IBOutlet weak private var getStartButton: UIButton!
     
-    var onboardingPageViewController: OnboardingPageViewController?
-
+    private var onboardingPageViewController: OnboardingPageViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,21 +49,24 @@ class OnboardingViewController: UIViewController {
 private extension OnboardingViewController {
     
     @IBAction func skipButtonTapped(_ sender: UIButton) {
-        if let homeViewController = storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController {
-            navigationController?.pushViewController(homeViewController, animated: true)
+        //DispatchQueue.main.async {
+        if let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController {
+            self.navigationController?.pushViewController(homeViewController, animated: true)
+            //    }
         }
     }
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
-        if let index = onboardingPageViewController?.currentPageIndex {
+        
+        if let index = self.onboardingPageViewController?.currentPageIndex {
             switch index {
             case 0...1:
-                onboardingPageViewController?.forwardPage()
+                self.onboardingPageViewController?.forwardPage()
             default:
                 break
             }
         }
-        updateUI()
+        self.updateUI()
     }
     
     @IBAction func pageControlTapped(_ sender: UIPageControl) {
@@ -88,6 +91,8 @@ extension OnboardingViewController {
         configureGradientButton(with: skipButton)
         configureGradientButton(with: nextButton)
         configureGradientButton(with: getStartButton)
+        
+        pageControl.numberOfPages = onboardingPageViewController?.pages.count ?? 0
     }
     
     private func configureGradientButton(with button: UIButton) {
@@ -110,20 +115,18 @@ extension OnboardingViewController {
     }
     
     private func updateUI() {
-        if let index = onboardingPageViewController?.currentPageIndex {
+        if let index = self.onboardingPageViewController?.currentPageIndex {
             switch index {
-            case 0...1:
-                animateHiddenButton(with: nextButton, isHidden: false)
-                animateHiddenButton(with: skipButton, isHidden: false)
-                getStartButton.isHidden = true
-            case 2:
-                nextButton.isHidden = true
-                skipButton.isHidden = true
-                animateHiddenButton(with: getStartButton, isHidden: false)
+            case (onboardingPageViewController?.pages.count)! - 1:
+                self.nextButton.isHidden = true
+                self.skipButton.isHidden = true
+                self.animateHiddenButton(with: self.getStartButton, isHidden: false)
             default:
-                break
+                self.animateHiddenButton(with: self.nextButton, isHidden: false)
+                self.animateHiddenButton(with: self.skipButton, isHidden: false)
+                self.getStartButton.isHidden = true
             }
-            pageControl.currentPage = index
+            self.pageControl.currentPage = index
         }
     }
     
@@ -137,7 +140,7 @@ extension OnboardingViewController {
 extension OnboardingViewController {
     
     func delegateCallback() {
-        onboardingPageViewController?.didUpdatePageIndex = { [weak self] currentPageIndex in
+        onboardingPageViewController?.viewModel.didUpdatePageIndex = { [weak self] currentPageIndex in
             self?.updateUI()
         }
     }

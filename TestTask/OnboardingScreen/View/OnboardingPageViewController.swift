@@ -9,62 +9,49 @@ import UIKit
 
 class OnboardingPageViewController: UIPageViewController {
     
-    var didUpdatePageIndex: ((Int) -> Void)?
+    lazy var viewModel: OnboardinPageViewModel = {
+        return OnboardinPageViewModel()
+    }()
     
     var currentPageIndex = 0
     
     private var lastVelocityYSign = 0
     
-    private(set) lazy var onboardingArray: [Onboarding] = {
-        return [Onboarding(imageName: "onboarding-1",
-                           headerText: "Узнавай первым о всех акциях и мероприятиях",
-                           descriptionText: "Все мероприятия, шоу и встречи Острова Мечты"),
-                Onboarding(imageName: "onboarding-2",
-                           headerText: "Покупай билеты легко!",
-                           descriptionText: "Выберай дату, тип и количество билетов и оплачивайте  одной кнопкой"),
-                Onboarding(imageName: "onboarding-3",
-                           headerText: "Управляй своими билетами и бонусами",
-                           descriptionText: "В профиле сохраняется история всех ваших покупок")]
-    }()
-     
-    private lazy var pages: [UIViewController?] = {
+    lazy var pages: [UIViewController?] = {
         return [contentViewController(at: 0),
                 contentViewController(at: 1),
                 contentViewController(at: 2)]
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel.initVM()
         configureView()
     }
     
     private func contentViewController(at index: Int) -> UIViewController? {
-        if index < 0 || index == onboardingArray.count { return nil }
-//        let storyboard: UIStoryboard? = UIStoryboard(name: "Main", bundle: nil)
-//        guard let pageContentViewController = storyboard?.instantiateViewController(identifier: "OnboardingContentViewController", creator: { coder in return OnboardingContentViewController(coder: coder, index: index, item: self.onboardingArray[index])
-//        }) else { return nil }
+        if index < 0 || index == viewModel.onboardingArray.count { return nil }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let pageContentViewController = storyboard.instantiateViewController(withIdentifier: "OnboardingContentViewController") as? OnboardingContentViewController else { return nil}
-        pageContentViewController.setViewData(onboardingArray[index])
+        guard let pageContentViewController = storyboard.instantiateViewController(withIdentifier: "OnboardingContentViewController") as? OnboardingContentViewController else { return nil }
+        pageContentViewController.viewModel = viewModel.getContentViewModel(at: index)
         return pageContentViewController
     }
     
     func setPage(index: Int) {
-        if let nextViewController = pages[index] {
-            if currentPageIndex < index {
-                setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
-            } else {
-                setViewControllers([nextViewController], direction: .reverse, animated: true, completion: nil)
-            }
+        guard let nextViewController = pages[index] else { return }
+        if currentPageIndex < index {
+            setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
+        } else {
+            setViewControllers([nextViewController], direction: .reverse, animated: true, completion: nil)
         }
         currentPageIndex = index
     }
-
+    
     func forwardPage() {
-        currentPageIndex += 1
-        if let nextViewController = pages[currentPageIndex] {
-            setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
+        self.currentPageIndex += 1
+        if let nextViewController = self.pages[self.currentPageIndex] {
+            self.setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
         }
     }
     
@@ -87,13 +74,8 @@ private extension OnboardingPageViewController {
                 subView.delegate = self
             }
         }
-        
-        if let startingViewController = pages[0] {
-            if let index = pages.firstIndex(of: startingViewController as? OnboardingContentViewController) {
-                currentPageIndex = index
-            }
-            setViewControllers([startingViewController], direction: .forward, animated: true, completion: nil)
-        }
+        guard let startingViewController = pages[0] else { return }
+        setViewControllers([startingViewController], direction: .forward, animated: true, completion: nil)
     }
 }
 
@@ -106,7 +88,6 @@ extension OnboardingPageViewController: UIPageViewControllerDataSource {
         if currentIndex == 0 { return nil } else {
             return pages[currentIndex - 1]
         }
-        
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
@@ -120,13 +101,12 @@ extension OnboardingPageViewController: UIPageViewControllerDataSource {
 // MARK: - UIPageViewControllerDelegate
 
 extension OnboardingPageViewController:  UIPageViewControllerDelegate {
-
+    
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if completed {
-            if let index = pages.firstIndex(of: pageViewController.viewControllers?.first as? OnboardingContentViewController) {
-                currentPageIndex = index
-                self.didUpdatePageIndex?(currentPageIndex)
-            }
+            guard let index = pages.firstIndex(of: pageViewController.viewControllers?.first as? OnboardingContentViewController) else { return }
+            currentPageIndex = index
+            viewModel.didUpdatePageIndex?(currentPageIndex)
         }
     }
 }
@@ -145,7 +125,7 @@ extension OnboardingPageViewController: UIScrollViewDelegate {
         
         if lastVelocityYSign < 0 {
             switch currentPageIndex {
-            case 2:
+            case pages.count - 1:
                 if let homeViewController = storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController {
                     navigationController?.pushViewController(homeViewController, animated: true)
                 }
@@ -155,4 +135,4 @@ extension OnboardingPageViewController: UIScrollViewDelegate {
         }
     }
 }
-  
+

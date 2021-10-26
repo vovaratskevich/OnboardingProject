@@ -9,7 +9,7 @@ import Foundation
 
 struct Onboarding {
     
-    var imageName: String = ""
-    var headerText: String = ""
-    var descriptionText: String  = ""
+    var imageName: String?
+    var headerText: String?
+    var descriptionText: String?  
 }
