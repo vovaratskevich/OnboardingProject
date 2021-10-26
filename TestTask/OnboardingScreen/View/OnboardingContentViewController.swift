@@ -42,10 +42,6 @@ private extension OnboardingContentViewController {
     
     func configureView() {
         childView.layer.cornerRadius = 24
-        childView.layer.cornerRadius = 24
-        childView.layer.cornerRadius = 24
-        childView.layer.cornerRadius = 24
-        childView.layer.cornerRadius = 24
         
         headerLabel.textColor = UIColor(red: 0.094, green: 0.136, blue: 0.179, alpha: 1)
         headerLabel.font = UIFont(name: "TTNorms-Medium", size: 25)
