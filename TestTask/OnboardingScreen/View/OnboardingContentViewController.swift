@@ -11,10 +11,10 @@ class OnboardingContentViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var headerLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var childView: UIView!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var headerLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var childView: UIView!
     
 //    init?(coder: NSCoder, index: Int, item: Onboarding) {
 //        self.index = index

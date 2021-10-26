@@ -41,9 +41,6 @@ class OnboardingPageViewController: UIPageViewController {
     
     private func contentViewController(at index: Int) -> UIViewController? {
         if index < 0 || index == onboardingArray.count { return nil }
-//        let storyboard: UIStoryboard? = UIStoryboard(name: "Main", bundle: nil)
-//        guard let pageContentViewController = storyboard?.instantiateViewController(identifier: "OnboardingContentViewController", creator: { coder in return OnboardingContentViewController(coder: coder, index: index, item: self.onboardingArray[index])
-//        }) else { return nil }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let pageContentViewController = storyboard.instantiateViewController(withIdentifier: "OnboardingContentViewController") as? OnboardingContentViewController else { return nil}
         pageContentViewController.setViewData(onboardingArray[index])
