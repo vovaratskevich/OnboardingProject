@@ -25,13 +25,6 @@ class ScrollViewController: UIViewController {
     private var scrollWidth: CGFloat = 0.0
     private var scrollHeight: CGFloat = 0.0
     
-    override func viewDidLayoutSubviews() {
-        scrollWidth = onboardingScrollView.frame.size.width
-        scrollHeight = onboardingScrollView.frame.size.height
-        configureView()
-        addConstraints()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         super.view.layoutIfNeeded()
@@ -46,8 +39,9 @@ class ScrollViewController: UIViewController {
             frame.origin.x = scrollWidth * CGFloat(index)
             frame.size = CGSize(width: scrollWidth, height: scrollHeight)
             
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            guard let slideViewController = storyboard.instantiateViewController(withIdentifier: "OnboardingContentViewController") as? OnboardingContentViewController else { return }
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            guard let slideViewController = storyboard.instantiateViewController(withIdentifier: "OnboardingContentViewController") as? OnboardingContentViewController else { return }
+            let slideViewController = ScrollContentViewController()
             slideViewController.viewModel = viewModel.getContentViewModel(at: index)
             
             slideViewController.view.frame = frame
@@ -58,7 +52,17 @@ class ScrollViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
         navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        scrollWidth = onboardingScrollView.frame.size.width
+        scrollHeight = onboardingScrollView.frame.size.height
+        configureView()
+        addConstraints()
     }
 }
 
@@ -70,7 +74,7 @@ private extension ScrollViewController {
         onboardingScrollView.contentInsetAdjustmentBehavior = .never
         onboardingScrollView.isPagingEnabled = true
         onboardingScrollView.showsVerticalScrollIndicator = false
-        //onboardingScrollView.showsHorizontalScrollIndicator = false
+        onboardingScrollView.showsHorizontalScrollIndicator = false
         onboardingScrollView.contentSize = CGSize(width: scrollWidth * CGFloat(pageCount), height: scrollHeight)
         onboardingScrollView.contentSize.height = 1.0
         
@@ -101,20 +105,20 @@ private extension ScrollViewController {
         }
         
         onboardingPageControl.snp.makeConstraints { make in
-            make.left.right.equalToSuperview().inset(96)
+            make.left.right.equalToSuperview().inset(96.0)
             make.bottom.equalTo(onboardingNextButton.snp.top).inset(-7.5)
         }
 
         onboardingNextButton.snp.makeConstraints { make in
-            make.left.right.equalToSuperview().inset(20)
-            make.bottom.equalTo(onboardingSkipButton.snp.top).inset(-20)
-            make.height.equalTo(onboardingNextButton.snp.width).dividedBy(343/46)
+            make.left.right.equalToSuperview().inset(20.0)
+            make.bottom.equalTo(onboardingSkipButton.snp.top).inset(-20.0)
+            make.height.equalTo(onboardingNextButton.snp.width).dividedBy(343.0/46.0)
         }
 
         onboardingSkipButton.snp.makeConstraints { make in
-            make.left.right.equalToSuperview().inset(20)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(15)
-            make.height.equalTo(onboardingSkipButton.snp.width).dividedBy(343/46)
+            make.left.right.equalToSuperview().inset(20.0)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(15.0)
+            make.height.equalTo(onboardingSkipButton.snp.width).dividedBy(343.0/46.0)
         }
     }
 }

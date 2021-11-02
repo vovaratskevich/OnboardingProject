@@ -15,7 +15,7 @@ class OnboardingContentViewModel {
         self.imageName = item.imageName
     }
     
-    var imageName: String?
-    var headerText: String?
-    var descriptionText: String?
+    private(set) var imageName: String?
+    private(set) var headerText: String?
+    private(set) var descriptionText: String?
 }
