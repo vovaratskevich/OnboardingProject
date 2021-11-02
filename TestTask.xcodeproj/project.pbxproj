@@ -20,7 +20,9 @@
 		9B4896742710894F00B9D524 /* TTNorms-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4896732710894F00B9D524 /* TTNorms-Medium.otf */; };
 		9B48967C27108F5400B9D524 /* OnboardingModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B48967B27108F5400B9D524 /* OnboardingModelTests.swift */; };
 		9BD9A9AD272064C70096F015 /* OnboardingContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD9A9AC272064C70096F015 /* OnboardingContentViewModel.swift */; };
-		C9A310F6F3C80550881DE365 /* Pods_TestTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A40EE4D1F00AA7288898E7E2 /* Pods_TestTask.framework */; };
+		9BF5472027314B2C00064937 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF5471F27314B2C00064937 /* ScrollViewController.swift */; };
+		9BF54721273154BF00064937 /* Pods_TestTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A40EE4D1F00AA7288898E7E2 /* Pods_TestTask.framework */; };
+		9BF54722273154BF00064937 /* Pods_TestTask.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A40EE4D1F00AA7288898E7E2 /* Pods_TestTask.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +34,20 @@
 			remoteInfo = TestTask;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9BF54723273154BF00064937 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9BF54722273154BF00064937 /* Pods_TestTask.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		015D8010D011A49AC94CEC13 /* Pods-TestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTask.release.xcconfig"; path = "Target Support Files/Pods-TestTask/Pods-TestTask.release.xcconfig"; sourceTree = "<group>"; };
@@ -53,6 +69,7 @@
 		9B48967B27108F5400B9D524 /* OnboardingModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModelTests.swift; sourceTree = "<group>"; };
 		9B48967D27108F5400B9D524 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9BD9A9AC272064C70096F015 /* OnboardingContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContentViewModel.swift; sourceTree = "<group>"; };
+		9BF5471F27314B2C00064937 /* ScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
 		A40EE4D1F00AA7288898E7E2 /* Pods_TestTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -61,7 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9A310F6F3C80550881DE365 /* Pods_TestTask.framework in Frameworks */,
+				9BF54721273154BF00064937 /* Pods_TestTask.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,7 +98,6 @@
 				4555FFBC0FC95EAAC3D94720 /* Pods-TestTask.debug.xcconfig */,
 				015D8010D011A49AC94CEC13 /* Pods-TestTask.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -186,10 +202,19 @@
 			path = OnboardingModelTests;
 			sourceTree = "<group>";
 		};
+		9BF5471E27314AF700064937 /* View1 */ = {
+			isa = PBXGroup;
+			children = (
+				9BF5471F27314B2C00064937 /* ScrollViewController.swift */,
+			);
+			path = View1;
+			sourceTree = "<group>";
+		};
 		9BFEBD6F270DFE4300D3329E /* OnboardingScreen */ = {
 			isa = PBXGroup;
 			children = (
 				9B0B28A9270C719F00ADCD6C /* Model */,
+				9BF5471E27314AF700064937 /* View1 */,
 				9BFEBD70270DFE6B00D3329E /* View */,
 				9B40835827216FAF009C2879 /* ViewModel */,
 			);
@@ -226,6 +251,7 @@
 				9B0B288A270C64BE00ADCD6C /* Frameworks */,
 				9B0B288B270C64BE00ADCD6C /* Resources */,
 				5695B8A9656DAE56230488A6 /* [CP] Embed Pods Frameworks */,
+				9BF54723273154BF00064937 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -362,6 +388,7 @@
 				9B0B28AB270C71AC00ADCD6C /* Onboarding.swift in Sources */,
 				9B0B28A6270C6BF400ADCD6C /* OnboardingContentViewController.swift in Sources */,
 				9BD9A9AD272064C70096F015 /* OnboardingContentViewModel.swift in Sources */,
+				9BF5472027314B2C00064937 /* ScrollViewController.swift in Sources */,
 				9B0B28A8270C6F0A00ADCD6C /* OnboardingPageViewController.swift in Sources */,
 				9B0B28AD270C798700ADCD6C /* OnboardingViewController.swift in Sources */,
 				9B40835A27217114009C2879 /* OnboardingPageViewModel.swift in Sources */,
@@ -411,6 +438,7 @@
 		9B0B289F270C64BF00ADCD6C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -472,6 +500,7 @@
 		9B0B28A0270C64BF00ADCD6C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;

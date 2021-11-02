@@ -776,7 +776,7 @@
 		67CB2CFC7CA1D93AE9FE2BF9820B3DFA /* SnapKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.release.xcconfig; sourceTree = "<group>"; };
 		680244CB80A290C5173147E7187F1F34 /* BehaviorSubject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BehaviorSubject.swift; path = RxSwift/Subjects/BehaviorSubject.swift; sourceTree = "<group>"; };
 		68292E5255D70D3CCE01561EAC76E5A7 /* ReplayRelay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplayRelay.swift; path = RxRelay/ReplayRelay.swift; sourceTree = "<group>"; };
-		683DAC10074617E88F7D83DE20E7F6DE /* Pods-TestTask */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-TestTask"; path = Pods_TestTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		683DAC10074617E88F7D83DE20E7F6DE /* Pods_TestTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6871668E824E87BA6FB778F2266876C8 /* RxRelay-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RxRelay-umbrella.h"; sourceTree = "<group>"; };
 		68BC3B27421D9853AD090900FD8F3144 /* UIGestureRecognizer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIGestureRecognizer.swift; path = Sources/Bond/UIKit/UIGestureRecognizer.swift; sourceTree = "<group>"; };
 		69767E710DA625575978F08CF2811696 /* RxCocoa.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RxCocoa.modulemap; sourceTree = "<group>"; };
@@ -1710,7 +1710,7 @@
 			children = (
 				9E5F6C63BBAB5A60862B7E067B771531 /* Bond.framework */,
 				3436D7C5225069490C685D77EB2E7F20 /* Differ.framework */,
-				683DAC10074617E88F7D83DE20E7F6DE /* Pods-TestTask */,
+				683DAC10074617E88F7D83DE20E7F6DE /* Pods_TestTask.framework */,
 				EE64B414D0662BDC3A4919CDA3BC3A49 /* ReactiveKit.framework */,
 				BC432FD48A5932251F1CAFBC4BF74894 /* RxCocoa.framework */,
 				FF8B264DFE802855D5D67E7CDDABFC3C /* RxRelay.framework */,
@@ -1998,7 +1998,7 @@
 			);
 			name = "Pods-TestTask";
 			productName = Pods_TestTask;
-			productReference = 683DAC10074617E88F7D83DE20E7F6DE /* Pods-TestTask */;
+			productReference = 683DAC10074617E88F7D83DE20E7F6DE /* Pods_TestTask.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		4622BFEF3DC16E8BD15EEFC30D4D0084 /* RxRelay */ = {

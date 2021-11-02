@@ -140,9 +140,9 @@ extension OnboardingViewController {
 extension OnboardingViewController {
     
     func delegateCallback() {
-        onboardingPageViewController?.viewModel.didUpdatePageIndex = { [weak self] currentPageIndex in
-            self?.updateUI()
-        }
+//        onboardingPageViewController?.viewModel.didUpdatePageIndex = { [weak self] currentPageIndex in
+//            self?.updateUI()
+//        }
     }
 }
 

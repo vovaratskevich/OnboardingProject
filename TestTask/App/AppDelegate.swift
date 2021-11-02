@@ -17,6 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 13.0, *) {
             window?.overrideUserInterfaceStyle = .light
         }
+        
+        let navigationController = UINavigationController(rootViewController: ScrollViewController())
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+        
         return true
     }
     

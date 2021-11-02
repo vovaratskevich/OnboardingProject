@@ -106,7 +106,7 @@ extension OnboardingPageViewController:  UIPageViewControllerDelegate {
         if completed {
             guard let index = pages.firstIndex(of: pageViewController.viewControllers?.first as? OnboardingContentViewController) else { return }
             currentPageIndex = index
-            viewModel.didUpdatePageIndex?(currentPageIndex)
+           // viewModel.didUpdatePageIndex?(currentPageIndex)
         }
     }
 }

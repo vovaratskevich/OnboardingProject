@@ -23,8 +23,6 @@ class OnboardinPageViewModel {
     
     private var contentViewModels: [OnboardingContentViewModel] = [OnboardingContentViewModel]()
     
-    var didUpdatePageIndex: ((Int) -> Void)?
-    
     //MARK: - Functions
     
     func initVM() {
