@@ -25,12 +25,8 @@ class OnboardinPageViewModel {
     
     //MARK: - Functions
     
-    func initVM() {
-        createContentViewModels(onboardings: onboardingArray)
-    }
-    
-    func createContentViewModels(onboardings: [Onboarding]) {
-        for item in onboardings {
+    func createContentViewModels() {
+        for item in onboardingArray {
             self.contentViewModels.append(OnboardingContentViewModel(item: item))
         }
     }

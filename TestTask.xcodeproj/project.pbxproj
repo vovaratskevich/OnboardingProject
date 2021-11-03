@@ -11,10 +11,7 @@
 		9B0B2898270C64BE00ADCD6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B0B2896270C64BE00ADCD6C /* Main.storyboard */; };
 		9B0B289A270C64BF00ADCD6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B0B2899270C64BF00ADCD6C /* Assets.xcassets */; };
 		9B0B289D270C64BF00ADCD6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B0B289B270C64BF00ADCD6C /* LaunchScreen.storyboard */; };
-		9B0B28A6270C6BF400ADCD6C /* OnboardingContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0B28A5270C6BF400ADCD6C /* OnboardingContentViewController.swift */; };
-		9B0B28A8270C6F0A00ADCD6C /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0B28A7270C6F0A00ADCD6C /* OnboardingPageViewController.swift */; };
 		9B0B28AB270C71AC00ADCD6C /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0B28AA270C71AC00ADCD6C /* Onboarding.swift */; };
-		9B0B28AD270C798700ADCD6C /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0B28AC270C798700ADCD6C /* OnboardingViewController.swift */; };
 		9B0B28B0270C944900ADCD6C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0B28AF270C944900ADCD6C /* HomeViewController.swift */; };
 		9B40835A27217114009C2879 /* OnboardingPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B40835927217114009C2879 /* OnboardingPageViewModel.swift */; };
 		9B4896742710894F00B9D524 /* TTNorms-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4896732710894F00B9D524 /* TTNorms-Medium.otf */; };
@@ -59,10 +56,7 @@
 		9B0B2899270C64BF00ADCD6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B0B289C270C64BF00ADCD6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B0B289E270C64BF00ADCD6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9B0B28A5270C6BF400ADCD6C /* OnboardingContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContentViewController.swift; sourceTree = "<group>"; };
-		9B0B28A7270C6F0A00ADCD6C /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		9B0B28AA270C71AC00ADCD6C /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
-		9B0B28AC270C798700ADCD6C /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		9B0B28AF270C944900ADCD6C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9B40835927217114009C2879 /* OnboardingPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewModel.swift; sourceTree = "<group>"; };
 		9B4896732710894F00B9D524 /* TTNorms-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTNorms-Medium.otf"; sourceTree = "<group>"; };
@@ -126,12 +120,10 @@
 		9B0B288F270C64BE00ADCD6C /* TestTask */ = {
 			isa = PBXGroup;
 			children = (
-				9B4896712710891800B9D524 /* Assets */,
-				9B3E70A4270EFEC3002F303B /* App */,
+				9B3E70A4270EFEC3002F303B /* Application */,
 				9B0B2896270C64BE00ADCD6C /* Main.storyboard */,
-				9B3E70A5270F301B002F303B /* LaunchScreen */,
-				9BFEBD6F270DFE4300D3329E /* OnboardingScreen */,
-				9B0B28AE270C942600ADCD6C /* HomeScreen */,
+				9B5E0DAA2732CBF200F87D52 /* Screens */,
+				9B5E0DA92732CA8300F87D52 /* Networking */,
 				9B0B289E270C64BF00ADCD6C /* Info.plist */,
 			);
 			path = TestTask;
@@ -153,12 +145,13 @@
 			path = HomeScreen;
 			sourceTree = "<group>";
 		};
-		9B3E70A4270EFEC3002F303B /* App */ = {
+		9B3E70A4270EFEC3002F303B /* Application */ = {
 			isa = PBXGroup;
 			children = (
 				9B0B2890270C64BE00ADCD6C /* AppDelegate.swift */,
+				9B4896712710891800B9D524 /* Assets */,
 			);
-			path = App;
+			path = Application;
 			sourceTree = "<group>";
 		};
 		9B3E70A5270F301B002F303B /* LaunchScreen */ = {
@@ -204,20 +197,27 @@
 			path = OnboardingModelTests;
 			sourceTree = "<group>";
 		};
-		9BF5471E27314AF700064937 /* View1 */ = {
+		9B5E0DA92732CA8300F87D52 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				9BF5471F27314B2C00064937 /* ScrollViewController.swift */,
-				9BD2CAC12731858D00FFDFCD /* ScrollContentViewController.swift */,
 			);
-			path = View1;
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		9B5E0DAA2732CBF200F87D52 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				9B3E70A5270F301B002F303B /* LaunchScreen */,
+				9BFEBD6F270DFE4300D3329E /* OnboardingScreen */,
+				9B0B28AE270C942600ADCD6C /* HomeScreen */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		9BFEBD6F270DFE4300D3329E /* OnboardingScreen */ = {
 			isa = PBXGroup;
 			children = (
 				9B0B28A9270C719F00ADCD6C /* Model */,
-				9BF5471E27314AF700064937 /* View1 */,
 				9BFEBD70270DFE6B00D3329E /* View */,
 				9B40835827216FAF009C2879 /* ViewModel */,
 			);
@@ -227,9 +227,8 @@
 		9BFEBD70270DFE6B00D3329E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9B0B28A5270C6BF400ADCD6C /* OnboardingContentViewController.swift */,
-				9B0B28A7270C6F0A00ADCD6C /* OnboardingPageViewController.swift */,
-				9B0B28AC270C798700ADCD6C /* OnboardingViewController.swift */,
+				9BF5471F27314B2C00064937 /* ScrollViewController.swift */,
+				9BD2CAC12731858D00FFDFCD /* ScrollContentViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -389,11 +388,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B0B28AB270C71AC00ADCD6C /* Onboarding.swift in Sources */,
-				9B0B28A6270C6BF400ADCD6C /* OnboardingContentViewController.swift in Sources */,
 				9BD9A9AD272064C70096F015 /* OnboardingContentViewModel.swift in Sources */,
 				9BF5472027314B2C00064937 /* ScrollViewController.swift in Sources */,
-				9B0B28A8270C6F0A00ADCD6C /* OnboardingPageViewController.swift in Sources */,
-				9B0B28AD270C798700ADCD6C /* OnboardingViewController.swift in Sources */,
 				9B40835A27217114009C2879 /* OnboardingPageViewModel.swift in Sources */,
 				9BD2CAC22731858D00FFDFCD /* ScrollContentViewController.swift in Sources */,
 				9B0B2891270C64BE00ADCD6C /* AppDelegate.swift in Sources */,

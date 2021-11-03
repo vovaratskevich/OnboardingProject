@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ScrollContentViewController: UIViewController {
     
@@ -16,7 +17,7 @@ class ScrollContentViewController: UIViewController {
     private lazy var contentStackView = UIStackView()
     private lazy var contentHeaderLabel = UILabel()
     private lazy var contentDescriptionLabel = UILabel()
-    private lazy var contentTempLabel = UILabel()
+    private lazy var contentEmptyLabel = UILabel()
     
     var viewModel: OnboardingContentViewModel?
     
@@ -51,6 +52,7 @@ private extension ScrollContentViewController {
         contentHeaderLabel.textAlignment = .center
         
         contentDescriptionLabel.textColor = UIColor(red: 0.094, green: 0.136, blue: 0.179, alpha: 1)
+        contentDescriptionLabel.font = UIFont.systemFont(ofSize: 15.0)
         contentDescriptionLabel.numberOfLines = 0
         contentDescriptionLabel.textAlignment = .center
         
@@ -58,7 +60,7 @@ private extension ScrollContentViewController {
             view.addSubview($0)
         }
         
-        [contentHeaderLabel, contentDescriptionLabel, contentTempLabel].forEach {
+        [contentHeaderLabel, contentDescriptionLabel, contentEmptyLabel].forEach {
             contentStackView.addArrangedSubview($0)
         }
     }
@@ -82,7 +84,7 @@ private extension ScrollContentViewController {
         
         contentHeaderLabel.snp.contentHuggingVerticalPriority = 252
         contentDescriptionLabel.snp.contentHuggingVerticalPriority = 251
-        contentTempLabel.snp.contentHuggingVerticalPriority = 250
+        contentEmptyLabel.snp.contentHuggingVerticalPriority = 250
     }
     
     func setData(viewModel: OnboardingContentViewModel?) {
